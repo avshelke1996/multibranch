@@ -7,17 +7,17 @@ pipeline{
     }
     stages{
         stage("clean"){
-            step{
+            steps{
                 echo "clean"
             }
         }
         stage("build"){
-            step{
+            steps{
                 echo "build"
             }
         }
         stage("deploy"){
-            step{
+            steps{
                 echo "deploy"
             }
         }
