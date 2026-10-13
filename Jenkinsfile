@@ -9,16 +9,16 @@ pipeline{
         stage("clean"){
             steps{
                 echo "clean"
-                script {
-                    def containerId = sh(
-                        script: 'docker ps -q --latest',
-                        returnStdout: true
-                    ).trim()
+                // script {
+                //     def containerId = sh(
+                //         script: 'docker ps -q --latest',
+                //         returnStdout: true
+                //     ).trim()
 
-                    echo "Container ID: ${containerId}"
+                //     echo "Container ID: ${containerId}"
 
-                    sh "docker kill ${containerId}"
-                }
+                //     sh "docker kill ${containerId}"
+                // }
             }
         }
         stage("build"){
