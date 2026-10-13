@@ -15,7 +15,7 @@ pipeline{
                         returnStdout: true
                     ).trim()
 
-                    if [ -n "$containerId" ]; 
+                    if [ -n "$containerId" ] 
                     then
                        sh "docker kill $containerId"
                     fi
