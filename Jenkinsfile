@@ -15,8 +15,17 @@ pipeline{
              steps{
                 echo "build"
                 sh "chmod 777 index.html"
-                sh "docker run -dp 60:80 --name s3 httpd"
-                sh "docker cp index.html s3:/usr/local/apache2/htdocs"
+                sh 'docker run -d -p 8080:80 httpd'
+                script {
+                    def containerId = sh(
+                        script: 'docker ps -q --latest',
+                        returnStdout: true
+                    ).trim()
+
+                    echo "Container ID: ${containerId}"
+
+                    sh "docker cp index.html ${containerId}:/usr/local/apache2/htdocs/index.html"
+                }
             }
         }
         stage("deploy"){
