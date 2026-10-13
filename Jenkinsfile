@@ -25,7 +25,7 @@ pipeline{
              steps{
                 echo "build"
                 sh "chmod 777 index.html"
-                sh 'docker run -d -p 8080:80 httpd'
+                sh 'docker run -d -p 65:80 httpd'
                 script {
                     def containerId = sh(
                         script: 'docker ps -q --latest',
