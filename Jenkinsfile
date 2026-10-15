@@ -11,9 +11,9 @@ pipeline{
                 echo "clean"
                 
                 sh '''
-                CONTAINERS= $(docker ps -q)
+                CONTAINERS=$(docker ps -q)
                 echo "+++++++++++++++$CONTAINERS"
-                if [ -n "${CONTAINERS}"]
+                if [ -n "${CONTAINERS}" ]
                 then
                     docker stop ${CONTAINERS} && docker rm ${CONTAINERS}
                 else
