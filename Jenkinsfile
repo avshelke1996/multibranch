@@ -9,6 +9,15 @@ pipeline{
         stage("clean"){
             steps{
                 echo "clean"
+                CONTAINERS=$(docker ps -q)
+                sh '''
+                if [ -n "${CONTAINERS}"]
+                then
+                    docker stop ${CONTAINERS} && docker rm ${CONTAINERS}
+                else
+                    echo "no running container"
+                fi
+                '''
             }
         }
         stage("build"){
