@@ -12,7 +12,7 @@ pipeline{
                 
                 sh '''
                 CONTAINERS= $(docker ps -q)
-                echo $CONTAINERS
+                echo "+++++++++++++++$CONTAINERS"
                 if [ -n "${CONTAINERS}"]
                 then
                     docker stop ${CONTAINERS} && docker rm ${CONTAINERS}
