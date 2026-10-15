@@ -20,6 +20,7 @@ pipeline{
                     echo "no running container"
                 fi
                 '''
+                sh "chmod -R 777 /mnt"
             }
         }
         stage("build"){
